@@ -26,11 +26,20 @@ alias t0='tail -n0 -F '
 
 alias n='cd ~/src/node'
 
+alias cd='_cd'
 alias lp="_lp"
 
 ########################
 # Functions
 ########################
+function _cd(){
+        if [ -z $2 ]; then
+                command cd $@
+        else
+                cd $(echo `pwd` | sed "s/$1/$2/")
+        fi
+}
+
 function _lp(){
 	if [[ -z $1 ]]; then
 		command lp
